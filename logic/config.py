@@ -1,4 +1,4 @@
-# Configurație pentru calea DB și fișiere Excel
+# Configurație pentru DB și fișiere Excel
 DB_PATH = "mockup_database.db"
 TARGET_CATEGORII_PATH = "Target categorii.xlsx"
 TARGET_MAGAZINE_PATH = "Target magazine.xlsx"

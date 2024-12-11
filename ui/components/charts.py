@@ -23,11 +23,11 @@ def show_pie_chart(df, column, title="Pie Chart"):
         st.warning("The dataset is empty.")
         return
 
-    # Drop rows with NaN in relevant columns and filter out rows with 0% values
+    # nu afiseaza NaN sau 0% in grafic
     df = df.dropna(subset=[column])  # Remove rows where `column` is NaN
     df = df[df[column] > 0]          # Remove rows where `column` is 0%
 
-    # Ensure filtered data is not empty
+    # asigura ca datele filtrate sunt valide
     if df.empty:
         st.warning("No valid data to display in the pie chart.")
         return
@@ -40,33 +40,33 @@ def show_pie_chart(df, column, title="Pie Chart"):
     labels = df['Categorie']
     colors = plt.cm.Paired(range(len(sizes)))
 
-    # Ensure sizes and labels match
+    # asigura ca numarul de etichete corespunde numarului de felii de pie chart
     if len(sizes) != len(labels):
         raise ValueError("The number of labels does not match the number of pie chart slices.")
 
-    # Define the explode for better visibility
+    # defineste culorile si explode pentru fiecare categorie
     explode = [0.1] * len(sizes)
 
-    # Create the pie chart
+    # creaza un grafic de tip pie chart
     fig, ax = plt.subplots(figsize=(10, 7))
     wedges, texts, autotexts = ax.pie(
         sizes, labels=None, autopct='%1.1f%%', startangle=140,
         colors=colors, explode=explode, textprops={'fontsize': 8}
     )
 
-    # Add a legend for better readability
+    # adauga o legend pentru fiecare categorie
     ax.legend(
         wedges, labels, title="Legend", loc="center left",
         bbox_to_anchor=(1, 0.5), fontsize=8
     )
 
-    # Adjust title placement
+    # ajusteaza dimensiunea fontului pentru text si procente
     ax.set_title(title, pad=20, fontsize=14)
 
-    # Ensure a circular aspect ratio
+    # asigura ca aspectul este un cerc
     ax.axis('equal')
 
-    # Display the chart
+    # afiseaza graficul
     st.pyplot(fig)
 
 
@@ -75,7 +75,7 @@ def show_map(df, column, title="Romania Map"):
         st.warning("The dataset is empty.")
         return
 
-    # Example lat/lng for major cities (expand this list as needed)
+    # Coordonatele orașelor din România menționate în setul de date
     city_coordinates ={
         "Bucharest": [44.4268, 26.1025],
         "Cluj-Napoca": [46.7712, 23.6236],
@@ -113,10 +113,10 @@ def show_map(df, column, title="Romania Map"):
     }
 
 
-    # Create a map centered on Romania
+    # Creaza o harta a Romaniei
     romania_map = folium.Map(location=[45.9432, 24.9668], zoom_start=7)
 
-    # Add markers for each city with percentages
+    # Adauga markeri pentru fiecare oras cu procentul din target
     for index, row in df.iterrows():
         city = row['Magazin']  # Assuming 'Magazin' column contains city names
         percent = row[column]
@@ -132,5 +132,5 @@ def show_map(df, column, title="Romania Map"):
                 fill_color="blue",
             ).add_to(romania_map)
 
-    # Display the map
+    # afiseaza harta
     st_folium(romania_map, width=700, height=500)

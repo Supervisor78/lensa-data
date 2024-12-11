@@ -1,11 +1,11 @@
 import streamlit as st
 from logic.data_processing import get_sales_data, process_magazine
 from ui.translations import get_translation
-from ui.components.charts import show_bar_chart, show_map  # Import the map function
+from ui.components.charts import show_bar_chart, show_map
 import logging
 
 
-def run(oct_start, nov_end, include_bonuses):  # Accept the three parameters here
+def run(oct_start, nov_end, include_bonuses):
     st.title(get_translation("page_magazine"))
 
     logging.debug(f"Fetching sales data from {oct_start} to {nov_end} with include_bonuses={include_bonuses}")
@@ -23,11 +23,11 @@ def run(oct_start, nov_end, include_bonuses):  # Accept the three parameters her
 
     st.dataframe(df_magazine[['Magazin', 'Vanzari', 'Target', 'Procent din target']])
 
-    # Add a toggle for choosing between Bar chart or Map
+    # Adauga optiunea de a alege intre Bar chart si Map
     visualization_type = st.radio(
         "Select visualization type",
         ["Bar chart", "Map"],
-        index=0  # Default is Bar chart
+        index=0  # Default este bar chart
     )
 
     if visualization_type == "Bar chart":
@@ -35,6 +35,6 @@ def run(oct_start, nov_end, include_bonuses):  # Accept the three parameters her
     elif visualization_type == "Map":
         show_map(df_magazine, column='Procent din target', title=get_translation("stores_map"))
 
-    # Explanation (optional)
+    # Explicație
     st.markdown("### Explanation")
     st.write("This visualization shows the percentage of target achieved by each store.")

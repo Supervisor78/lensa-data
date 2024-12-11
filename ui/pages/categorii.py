@@ -3,13 +3,13 @@ import logging
 from logic.data_processing import get_sales_data, process_categorii
 from ui.translations import get_translation
 from ui.components.filters import get_oct_nov_dates
-from ui.components.charts import show_bar_chart, show_pie_chart  # Import pie chart function
+from ui.components.charts import show_bar_chart, show_pie_chart
 
 
 def run(oct_start, nov_end, include_bonuses):
     st.title(get_translation("page_categorii"))
 
-    # Ensure the correct date range is used
+    # asigura ca intervalul de date este corect
     logging.debug(f"Fetching sales data from {oct_start} to {nov_end} with include_bonuses={include_bonuses}")
 
     df_sales = get_sales_data(oct_start, nov_end)
@@ -25,11 +25,11 @@ def run(oct_start, nov_end, include_bonuses):
 
     st.dataframe(df_categorii[['Categorie', 'Vanzari', 'Target', 'Procent din target']])
 
-    # Add the toggle for choosing between the Bar chart or Pie chart
+    # adauga optiunea de a alege intre Bar chart si Pie chart
     chart_type = st.radio(
         "Select chart type",
         ["Bar chart", "Pie chart"],
-        index=0  # Default is bar chart
+        index=0  # Default este bar chart
     )
 
     if chart_type == "Bar chart":

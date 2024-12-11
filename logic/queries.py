@@ -1,4 +1,3 @@
-# src/logic/queries.py
 
 QUERY_SALES = """
 WITH selected_orders AS (
