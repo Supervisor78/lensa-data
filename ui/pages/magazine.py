@@ -25,16 +25,16 @@ def run(oct_start, nov_end, include_bonuses):
 
     # Adauga optiunea de a alege intre Bar chart si Map
     visualization_type = st.radio(
-        "Select visualization type",
-        ["Bar chart", "Map"],
+        "Selecteaza tipul de vizualizare",
+        ["Bar chart", "Harta"],
         index=0  # Default este bar chart
     )
 
     if visualization_type == "Bar chart":
         show_bar_chart(df_magazine, x_col='Magazin', y_col='Procent din target', title=get_translation("stores_chart"))
-    elif visualization_type == "Map":
+    elif visualization_type == "Harta":
         show_map(df_magazine, column='Procent din target', title=get_translation("stores_map"))
 
     # Explicație
-    st.markdown("### Explanation")
-    st.write("This visualization shows the percentage of target achieved by each store.")
+    st.markdown("### Explicatie")
+    st.write("Aceasta vizualizare arata procentul din target atins de fiecare magazin.")
