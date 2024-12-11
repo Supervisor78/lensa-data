@@ -35,4 +35,4 @@ def run(oct_start, nov_end, include_bonuses):
     if chart_type == "Bar chart":
         show_bar_chart(df_categorii, x_col='Categorie', y_col='Procent din target', title=get_translation("categories_chart"))
     else:
-        show_pie_chart(df_categorii, column='Procent din target', title=get_translation("categories_pie_chart"))
+        show_pie_chart(df_categorii, column='Procent din target', title=get_translation("Categorii"))
