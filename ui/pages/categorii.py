@@ -27,7 +27,7 @@ def run(oct_start, nov_end, include_bonuses):
 
     # adauga optiunea de a alege intre Bar chart si Pie chart
     chart_type = st.radio(
-        "Select chart type",
+        "Selecteaza tipul de vizualizare",
         ["Bar chart", "Pie chart"],
         index=0  # Default este bar chart
     )
