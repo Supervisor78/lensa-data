@@ -1,0 +1,14 @@
+{
+  "title": "Raport Vânzări",
+  "filters_title": "Filtre",
+  "include_bonuses": "Include Bonusuri",
+  "select_page": "Selectează pagina",
+  "page_categorii": "Categorii",
+  "page_magazine": "Magazine",
+  "no_data": "Nu există date disponibile pentru perioada selectată.",
+  "categories_chart": "Procent din target pe categorii",
+  "stores_chart": "Procent din target pe magazine",
+  "Vanzari": "Vânzări",
+  "Target": "Target",
+  "Procent din target": "Procent din target"
+}
